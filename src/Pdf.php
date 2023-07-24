@@ -149,7 +149,7 @@ class Pdf extends Component
     /**
      * @var array|string css files to prepend to the PDF
      */
-    public $cssFile = '@vendor/kartik-v/yii2-mpdf/src/assets/kv-mpdf-bootstrap.min.css';
+    public $cssFile = '@vendor/misterspelik/yii2-mpdf/src/assets/kv-mpdf-bootstrap.min.css';
     /**
      * @var string additional inline css to append after the cssFile
      */

@@ -43,13 +43,13 @@ Read this [web tip /wiki](http://webtips.krajee.com/setting-composer-minimum-sta
 Either run
 
 ```
-$ php composer.phar require kartik-v/yii2-mpdf "dev-master"
+$ composer require misterspelik/yii2-mpdf "dev-master"
 ```
 
 or add
 
 ```
-"kartik-v/yii2-mpdf": "dev-master"
+"misterspelik/yii2-mpdf": "dev-master"
 ```
 
 to the ```require``` section of your `composer.json` file.
