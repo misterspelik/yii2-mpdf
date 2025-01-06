@@ -6,7 +6,7 @@
  * @version 1.0.7
  */
 
-namespace kartik\mpdf;
+namespace misterspelik\mpdf;
 
 use Mpdf\Mpdf;
 use Mpdf\MpdfException;
@@ -24,160 +24,196 @@ use yii\web\Response;
  * the [[Mpdf]] library and includes various additional enhancements specifically for the Yii2 framework.
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
- * @since 1.0
+ * @author Yaroslav Krutikov <misterspelik@gmail.com>
+ * @since 1.0.7
  */
 class Pdf extends Component
 {
     /**
      * Blank default mode
      */
-    const MODE_BLANK = '';
+    public const MODE_BLANK = '';
+
     /**
      * Core fonts mode
      */
-    const MODE_CORE = 'c';
+    public const MODE_CORE = 'c';
+
     /**
      * Unicode UTF-8 encoded mode
      */
-    const MODE_UTF8 = 'UTF-8';
+    public const MODE_UTF8 = 'UTF-8';
+
     /**
      * Asian fonts mode
      */
-    const MODE_ASIAN = '+aCJK';
+    public const MODE_ASIAN = '+aCJK';
+
     /**
      * A3 page size format
      */
-    const FORMAT_A3 = 'A3';
+    public const FORMAT_A3 = 'A3';
+
     /**
      * A4 page size format
      */
-    const FORMAT_A4 = 'A4';
+    public const FORMAT_A4 = 'A4';
+
     /**
      * Letter page size format
      */
-    const FORMAT_LETTER = 'Letter';
+    public const FORMAT_LETTER = 'Letter';
+
     /**
      * Legal page size format
      */
-    const FORMAT_LEGAL = 'Legal';
+    public const FORMAT_LEGAL = 'Legal';
+
     /**
      * Folio page size format
      */
-    const FORMAT_FOLIO = 'Folio';
+    public const FORMAT_FOLIO = 'Folio';
+
     /**
      * Ledger page size format
      */
-    const FORMAT_LEDGER = 'Ledger-L';
+    public const FORMAT_LEDGER = 'Ledger-L';
+
     /**
      * Tabloid page size format
      */
-    const FORMAT_TABLOID = 'Tabloid';
+    public const FORMAT_TABLOID = 'Tabloid';
+
     /**
      * Portrait orientation
      */
-    const ORIENT_PORTRAIT = 'P';
+    public const ORIENT_PORTRAIT = 'P';
+
     /**
      * Landscape orientation
      */
-    const ORIENT_LANDSCAPE = 'L';
+    public const ORIENT_LANDSCAPE = 'L';
+
     /**
      * File output sent to browser inline
      */
-    const DEST_BROWSER = 'I';
+    public const DEST_BROWSER = 'I';
+
     /**
      * File output sent for direct download
      */
-    const DEST_DOWNLOAD = 'D';
+    public const DEST_DOWNLOAD = 'D';
+
     /**
      * File output sent to a file
      */
-    const DEST_FILE = 'F';
+    public const DEST_FILE = 'F';
+
     /**
      * File output sent as a string
      */
-    const DEST_STRING = 'S';
+    public const DEST_STRING = 'S';
+
     /**
      * @var string specifies the mode of the new document. If the mode is set by passing a country/language string,
      * this may also set: available fonts, text justification, and directionality RTL.
      */
     public $mode = self::MODE_BLANK;
+
     /**
      * @var string|array, the format can be specified either as a pre-defined page size, or as an array of width and
      * height in millimetres.
      */
     public $format = self::FORMAT_A4;
+
     /**
      * @var integer sets the default document font size in points (pt)
      */
     public $defaultFontSize = 0;
+
     /**
      * @var string sets the default font-family for the new document. Uses default value set in defaultCSS
      * unless codepage has been set to "win-1252". If codepage="win-1252", the appropriate core Adobe font
      * will be set i.e. Helvetica, Times, or Courier.
      */
     public $defaultFont = '';
+
     /**
      * @var float sets the page left margin for the new document. All values should be specified as LENGTH in
      * millimetres. If you are creating a DOUBLE-SIDED document, the margin values specified will be used for
      * ODD pages; left and right margins will be mirrored for EVEN pages.
      */
     public $marginLeft = 15;
+
     /**
      * @var float sets the page right margin for the new document (in millimetres).
      */
     public $marginRight = 15;
+
     /**
      * @var float sets the page top margin for the new document (in millimetres).
      */
     public $marginTop = 16;
+
     /**
      * @var float sets the page bottom margin for the new document (in millimetres).
      */
     public $marginBottom = 16;
+
     /**
      * @var float sets the page header margin for the new document (in millimetres).
      */
     public $marginHeader = 9;
+
     /**
      * @var float sets the page footer margin for the new document (in millimetres).
      */
     public $marginFooter = 9;
+
     /**
      * @var string specifies the default page orientation of the new document.
      */
     public $orientation = self::ORIENT_PORTRAIT;
+
     /**
      * @var array|string css files to prepend to the PDF
      */
     public $cssFile = '@vendor/misterspelik/yii2-mpdf/src/assets/kv-mpdf-bootstrap.min.css';
+
     /**
      * @var string additional inline css to append after the cssFile
      */
     public $cssInline = '';
+
     /**
      * @var string the HTML content to be converted to PDF
      */
     public $content = '';
+
     /**
      * @var string the output filename
      */
     public $filename = '';
+
     /**
      * @var string the output destination
      */
     public $destination = self::DEST_BROWSER;
+
     /**
      * @var string the folder path for storing the temporary data generated by mpdf.
      * If not set this defaults to path `Yii::getAlias('@runtime/mpdf')` which will be created if it does not exist.
      */
     public $tempPath;
+
     /**
-     * @var array the Mpdf methods that will called in the sequence listed before rendering the content. Should be an
+     * @var array the Mpdf methods that will be called in the sequence listed before rendering the content. Should be an
      * associative array entered as `$method => $params` pairs, where:
      * - `$method`: _string_, is the Mpdf method / function name
      * - `$param`: _mixed_, are the Mpdf method parameters
      */
     public $methods = [];
+
     /**
      * @var array the Mpdf configuration options entered as `$key => value` pairs, where:
      * - `$key`: _string_, is the configuration property name
@@ -188,14 +224,17 @@ class Pdf extends Component
         'ignore_invalid_utf8' => true,
         'tabSpaces' => 4,
     ];
+
     /**
      * @var Mpdf api instance
      */
     protected $_mpdf;
+
     /**
      * @var string the css file content
      */
     protected $_css;
+
     /**
      *
      * @var array list of file paths that should be attached to the generated PDF
@@ -203,7 +242,7 @@ class Pdf extends Component
     protected $_pdfAttachments;
 
     /**
-     * @inheritdoc
+     * {@inheritDoc}
      */
     public function init()
     {
