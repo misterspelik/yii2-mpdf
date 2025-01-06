@@ -1,22 +1,9 @@
-<h1 align="center">
-    <a href="http://demos.krajee.com" title="Krajee Demos" target="_blank">
-        <img src="http://kartik-v.github.io/bootstrap-fileinput-samples/samples/krajee-logo-b.png" alt="Krajee Logo"/>
-    </a>
-    <br>
-    yii2-mpdf
-    <hr>
-    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DTP3NZQ6G2AYU"
-       title="Donate via Paypal" target="_blank">
-        <img src="http://kartik-v.github.io/bootstrap-fileinput-samples/samples/donate.png" alt="Donate"/>
-    </a>
-</h1>
-
-[![Stable Version](https://poser.pugx.org/kartik-v/yii2-mpdf/v/stable)](https://packagist.org/packages/kartik-v/yii2-mpdf)
-[![Unstable Version](https://poser.pugx.org/kartik-v/yii2-mpdf/v/unstable)](https://packagist.org/packages/kartik-v/yii2-mpdf)
-[![License](https://poser.pugx.org/kartik-v/yii2-mpdf/license)](https://packagist.org/packages/kartik-v/yii2-mpdf)
-[![Total Downloads](https://poser.pugx.org/kartik-v/yii2-mpdf/downloads)](https://packagist.org/packages/kartik-v/yii2-mpdf)
-[![Monthly Downloads](https://poser.pugx.org/kartik-v/yii2-mpdf/d/monthly)](https://packagist.org/packages/kartik-v/yii2-mpdf)
-[![Daily Downloads](https://poser.pugx.org/kartik-v/yii2-mpdf/d/daily)](https://packagist.org/packages/kartik-v/yii2-mpdf)
+[![Stable Version](https://poser.pugx.org/misterspelik/yii2-mpdf/v/stable)](https://packagist.org/packages/misterspelik/yii2-mpdf)
+[![Unstable Version](https://poser.pugx.org/kartik-v/yii2-mpdf/v/unstable)](https://packagist.org/packages/misterspelik/yii2-mpdf)
+[![License](https://poser.pugx.org/kartik-v/yii2-mpdf/license)](https://packagist.org/packages/misterspelik/yii2-mpdf)
+[![Total Downloads](https://poser.pugx.org/misterspelik/yii2-mpdf/downloads)](https://packagist.org/packages/misterspelik/yii2-mpdf)
+[![Monthly Downloads](https://poser.pugx.org/misterspelik/yii2-mpdf/d/monthly)](https://packagist.org/packages/misterspelik/yii2-mpdf)
+[![Daily Downloads](https://poser.pugx.org/misterspelik/yii2-mpdf/d/daily)](https://packagist.org/packages/misterspelik/yii2-mpdf)
 
 The **yii2-mpdf** extension is a Yii2 wrapper component for the [mPDF library](http://www.mpdf1.com/) with enhancements. The mPDF library offers ability to generate PDF files from UTF-8 encoded HTML. This library is based on [FPDF](http://www.fpdf.org/) and [HTML2FPDF](http://html2fpdf.sourceforge.net/), with a number of enhancements. The key features in the library are to be able to generate PDF files 'on-the-fly' from HTML content, handling different languages. Refer the [documentation manual](https://mpdf.github.io) or the [upstream mpdf site](http://mpdf1.com) for further details and understanding of the library. The yii2-mpdf extension offers an easy way to integrate and use the mPDF library within your Yii application with subtle enhancements. The key features offerred with this release are:
 
